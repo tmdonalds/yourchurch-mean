@@ -1,0 +1,1 @@
+angular.module('yourchurchApp', ['app.routes', 'mainCtrl']);

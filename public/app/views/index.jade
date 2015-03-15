@@ -1,0 +1,46 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title YourChurch MEAN Application
+
+        <!-- For Angular Routing -->
+        base(href='/')
+
+        <!-- CSS -->
+        <!-- load bootstrap here -->
+        <!-- css is going to be loaded via gul and bower -->
+        link(rel='stylesheet',href='assets/css/style.min.css')
+        link(rel='stylesheet',href='assets/libs/bootstrap/dist/css/bootstrap.min.css')
+
+        <!-- JS / LIBS -->
+        script(src='assets/libs/angular/angular.min.js')
+        script(src='assets/libs/angular-route/angular-route.min.js')
+        script(src='assets/libs/angular-animate/angular-animate.min.js')
+
+        <!-- APP -->
+        script(src='dist/app.js')
+        //script(src='app/controllers/mainCtrl.js')
+        //script(src='app/app.routes.js')
+        //script(src='app/app.js')
+    body(class='container',ng-app='yourchurchApp',ng-controller='mainController as main')
+        <!-- NAVBAR -->
+        header
+            div(class="navbar navbar-inverse",ng-if="main.loggedIn")
+                div(class="container")
+                div(class="navbar-header")
+                a(href="/",class="navbar-brand")
+                    span(class="glyphicon glyphicon-fire text-danger") User CRM
+                ul(class="nav navbar-nav")
+                    li
+                        a(href="/users")
+                            span(class="glyphicon glyphicon-user") Users
+                            ul(class="nav navbar-nav navbar-right")
+                    li(ng-if="!main.loggedIn")
+                        a(href="/login") Login
+                    li(ng-if="main.loggedIn",class="navbar-text") Hello {{ main.user.username }}!
+                    li(ng-if="main.loggedIn")
+                        a(href="#",ng-click="main.doLogout()") Logout
+        main(class="container")
+            <!-- ANGULAR VIEWS -->
+            div(ng-view)
