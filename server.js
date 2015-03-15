@@ -38,8 +38,12 @@ app.set('view engine', 'jade');
 // ====================================
 
 // API ROUTES ------------------------
-//var apiRoutes = require('./app/routes/api')(app, express);
-//app.use('/api', apiRoutes);
+var apiRoutes = require('./app/routes/api')(app, express);
+// We are going to protect /api routes with JWT
+app.use('/api', apiRoutes);
+//app.use(express.json());
+//app.use(express.urlencoded());
+
 
 app.get('/pages/:name', function (req, res)
 { var name = req.params.name;
@@ -53,7 +57,6 @@ app.get('/pages/:name', function (req, res)
 app.get('*', function(req, res) {
     res.render('index');
 });
-
 
 // START THE SERVER
 // ====================================

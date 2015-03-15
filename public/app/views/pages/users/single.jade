@@ -1,0 +1,65 @@
+div(class="page-header")
+	h1(ng-if="user.type == 'create'") Create User
+	h1(ng-if="user.type == 'edit'") Edit User
+
+form(class="form-horizontal",ng-submit="user.saveUser()")
+	
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Name
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.name")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Username
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.email")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Password
+		div(class="col-sm-6")
+			input(type="password",class="form-control",ng-model="user.userData.password")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Address
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.address")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Address2
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.address2")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") City
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.city")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") State
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.state")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Zip
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.zip")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Home Phone Number
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.homePhone")
+
+	div(class="form-group")
+		label(class="col-sm-2 control-label") Cell Phone Number
+		div(class="col-sm-6")
+			input(type="text",class="form-control",ng-model="user.userData.cellPhone")
+
+
+	div(class="form-group")
+	div(class="col-sm-offset-2 col-sm-6")
+		button(type="submit",class="btn btn-success btn-lg btn-block",ng-if="user.type == 'create'") Create User
+		button(type="submit",class="btn btn-success btn-lg btn-block",ng-if="user.type == 'edit'") Update User
+
+div(class="row show-hide-message",ng-show="user.message")
+	div(class="col-sm-6 col-sm-offset-2")
+		div(class="alert alert-info") {{ user.message }}
